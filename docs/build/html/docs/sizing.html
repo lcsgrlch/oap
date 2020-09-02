@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sizing Methods &#8212; oap September 2020 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File Methods" href="files.html" />
+    <link rel="prev" title="Console Output" href="console.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="sizing-methods">
+<h1>Sizing Methods<a class="headerlink" href="#sizing-methods" title="Permalink to this headline">¶</a></h1>
+<p><strong>Attention!</strong>
+The diameters are returned in pixels so that they are independent of the resolution of the Optical Array Probe.
+If you want the actual diameter, you have to multiply the number of pixels by the resolution of the probe.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="x-diameter">
+<h2>x_diameter<a class="headerlink" href="#x-diameter" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">x_diameter</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Measures the diameter of the particle in the x-axis (along the diode array) in image pixels.</p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>array</em><span class="classifier">string, list or numpy-array (1d or 2d | dtype=int)</span></dt><dd><p>The optical-array (particle image).</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>x-diameter</em><span class="classifier">integer</span></dt><dd><p>The measured diameter (along the diode array) of the particle in image pixels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">print_array</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">                  2 2 2 2 2</span>
+<span class="go">              2 2 2 2 2 2 2 2</span>
+<span class="go">              2 2 2     2 2 2</span>
+<span class="go">            2 2 2         1 1</span>
+<span class="go">            2 2 2       2 1 2</span>
+<span class="go">              2 2 2 2 2 1 1</span>
+<span class="go">                1 1 2 2 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">x_diameter</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="y-diameter">
+<h2>y_diameter<a class="headerlink" href="#y-diameter" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">y_diameter</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Measures the diameter of the particle in the y-axis (in flight direction) in image pixels.</p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>array</em><span class="classifier">string, list or numpy-array (1d or 2d | dtype=int)</span></dt><dd><p>The optical-array (particle image).</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>y-diameter</em><span class="classifier">integer</span></dt><dd><p>The measured diameter (in flight direction) of the particle in image pixels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">print_array</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">                  2 2 2 2 2</span>
+<span class="go">              2 2 2 2 2 2 2 2</span>
+<span class="go">              2 2 2     2 2 2</span>
+<span class="go">            2 2 2         1 1</span>
+<span class="go">            2 2 2       2 1 2</span>
+<span class="go">              2 2 2 2 2 1 1</span>
+<span class="go">                1 1 2 2 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">y_diameter</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="xy-diameter">
+<h2>xy_diameter<a class="headerlink" href="#xy-diameter" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">xy_diameter</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Measures both diameters (x- and y-axis) of the particle in image pixels.</p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>array</em><span class="classifier">string, list or numpy-array (1d or 2d | dtype=int)</span></dt><dd><p>The optical-array (particle image).</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>x-diameter, y-diameter</em><span class="classifier">tuple of integers</span></dt><dd><p>The measured x-diameter (along the diode array) and the measured y-diameter (in flight direction) of the particle. Both in image pixels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">print_array</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">                  2 2 2 2 2</span>
+<span class="go">              2 2 2 2 2 2 2 2</span>
+<span class="go">              2 2 2     2 2 2</span>
+<span class="go">            2 2 2         1 1</span>
+<span class="go">            2 2 2       2 1 2</span>
+<span class="go">              2 2 2 2 2 1 1</span>
+<span class="go">                1 1 2 2 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">xy_diameter</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">(9, 7)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="min-diameter">
+<h2>min_diameter<a class="headerlink" href="#min-diameter" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">min_diameter</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Calculates the <em>Minimum Diameter</em> of the cloud particle. <span class="math notranslate nohighlight">\(D_{min} = 2 \cdot \sqrt{\frac{x \cdot y}{pi}}\)</span></p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>array</em><span class="classifier">string, list or numpy-array (1d or 2d | dtype=int)</span></dt><dd><p>The optical-array (particle image).</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>min-diameter</em><span class="classifier">float</span></dt><dd><p>The calculated <em>Minimum Diameter</em> of the particle in image pixels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">print_array</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">          1 1</span>
+<span class="go">      1 1 1 2 2 1</span>
+<span class="go">    1 2 3 2 3 3 2 2 2 2 3 2 2 1 1</span>
+<span class="go">    1 2 3 3 3 3 2 2 2 2 3 2 2 2 2 1 1 2 1 1 1</span>
+<span class="go">    2 3 3 3 3 3 2 3 3 2 3 3 3 3 3 2 2 3 2 2 2 2 2 2 2   1</span>
+<span class="go">    2 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 2 3 2 3 3 2 2 2 3 1 1</span>
+<span class="go">      1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2</span>
+<span class="go">          2 2 1 2 2 2 3 3 2 3 3 3 3 3 3 3 3 3 3 3 2 3 3 2</span>
+<span class="go">                      1 1   1 2 2 3 2 3 3 3 3 3 3 2 3 3 2</span>
+<span class="go">                            1 1 2 1 2 2 3 3 3 3 3 2 3 2 1</span>
+<span class="go">                                              1 1 1 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">min_diameter</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">19.44613444328572</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="max-diameter">
+<h2>max_diameter<a class="headerlink" href="#max-diameter" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">max_diameter</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Calculates the <em>Maximum Diameter</em> of the cloud particle. <span class="math notranslate nohighlight">\(D_{max} = \sqrt{x^2 + y^2}\)</span></p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>array</em><span class="classifier">string, list or numpy-array (1d or 2d | dtype=int)</span></dt><dd><p>The optical-array (particle image).</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>max-diameter</em><span class="classifier">float</span></dt><dd><p>The calculated <em>Maximum Diameter</em> of the particle in image pixels.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">print_array</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">          1 1</span>
+<span class="go">      1 1 1 2 2 1</span>
+<span class="go">    1 2 3 2 3 3 2 2 2 2 3 2 2 1 1</span>
+<span class="go">    1 2 3 3 3 3 2 2 2 2 3 2 2 2 2 1 1 2 1 1 1</span>
+<span class="go">    2 3 3 3 3 3 2 3 3 2 3 3 3 3 3 2 2 3 2 2 2 2 2 2 2   1</span>
+<span class="go">    2 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 2 3 2 3 3 2 2 2 3 1 1</span>
+<span class="go">      1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2</span>
+<span class="go">          2 2 1 2 2 2 3 3 2 3 3 3 3 3 3 3 3 3 3 3 2 3 3 2</span>
+<span class="go">                      1 1   1 2 2 3 2 3 3 3 3 3 3 2 3 3 2</span>
+<span class="go">                            1 1 2 1 2 2 3 3 3 3 3 2 3 2 1</span>
+<span class="go">                                              1 1 1 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">max_diameter</span><span class="p">(</span><span class="n">optical_array</span><span class="p">)</span>
+<span class="go">29.154759474226502</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="area-ratio">
+<h2>area_ratio<a class="headerlink" href="#area-ratio" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">area_ratio</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="sphere-volume">
+<h2>sphere_volume<a class="headerlink" href="#sphere-volume" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">sphere_volume</span><span class="p">(</span><span class="n">diameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Computes the volume of a sphere for a given diameter.</p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>diameter</em><span class="classifier">float</span></dt><dd><p>The diameter of the sphere.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>volume</em><span class="classifier">float</span></dt><dd><p>The calculated volume of the sphere.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">sphere_volume</span><span class="p">(</span><span class="mf">10.5</span><span class="p">)</span>
+<span class="go">606.1310326019807</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="sphere-surface">
+<h2>sphere_surface<a class="headerlink" href="#sphere-surface" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">sphere_surface</span><span class="p">(</span><span class="n">diameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Computes the surface area of a sphere for a given diameter.</p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>diameter</em><span class="classifier">float</span></dt><dd><p>The diameter of the sphere.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>surface area</em><span class="classifier">float</span></dt><dd><p>The calculated surface area of the sphere.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">sphere_surface</span><span class="p">(</span><span class="mf">10.5</span><span class="p">)</span>
+<span class="go">346.3605900582747</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="hexprism-volume">
+<h2>hexprism_volume<a class="headerlink" href="#hexprism-volume" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">hexprism_volume</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">diameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Computes the volume of a hexagonal prism for a given height and a given diameter.</p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>height</em><span class="classifier">float</span></dt><dd><p>The height of the hexagonal prism.</p>
+</dd>
+<dt><em>diameter</em><span class="classifier">float</span></dt><dd><p>The vertex to vertex diameter of the hexagon, which is equal to the side length times two.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>volume</em><span class="classifier">float</span></dt><dd><p>The calculated volume of the hexagonal prism.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">hexprism_volume</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mf">14.5</span><span class="p">,</span> <span class="n">diameter</span><span class="o">=</span><span class="mf">5.25</span><span class="p">)</span>
+<span class="go">259.5843489609184</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="hexprism-surface">
+<h2>hexprism_surface<a class="headerlink" href="#hexprism-surface" title="Permalink to this headline">¶</a></h2>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">hexprism_surface</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">diameter</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>Description:</strong></dt><dd><p>Computes the surface area of a hexagonal prism for a given height and a given diameter.</p>
+</dd>
+<dt><strong>Parameters:</strong></dt><dd><dl class="simple">
+<dt><em>height</em><span class="classifier">float</span></dt><dd><p>The height of the hexagonal prism.</p>
+</dd>
+<dt><em>diameter</em><span class="classifier">float</span></dt><dd><p>The vertex to vertex diameter of the hexagon, which is equal to the side length times two.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><dl class="simple">
+<dt><em>surface area</em><span class="classifier">float</span></dt><dd><p>The calculated surface area of the hexagonal prism.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl>
+<dt><strong>Examples:</strong></dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">oap</span><span class="o">.</span><span class="n">hexprism_surface</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mf">14.5</span><span class="p">,</span> <span class="n">diameter</span><span class="o">=</span><span class="mf">5.25</span><span class="p">)</span>
+<span class="go">264.1797377877129</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">oap</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Download and Install</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../docs.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="globals.html">Globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="console.html">Console Output</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sizing Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files.html">File Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mods.html">Array Modifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html">Helper Functions</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../docs.html">Documentation</a><ul>
+      <li>Previous: <a href="console.html" title="previous chapter">Console Output</a></li>
+      <li>Next: <a href="files.html" title="next chapter">File Methods</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Lucas Grulich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/docs/sizing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

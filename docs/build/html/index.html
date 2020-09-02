@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>oap - Optical Array Processing for Python (v0.0.10) &#8212; oap September 2020 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Download and Install" href="install.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="oap-optical-array-processing-for-python-v0-0-10">
+<h1><strong>oap</strong> - Optical Array Processing for Python (v0.0.10)<a class="headerlink" href="#oap-optical-array-processing-for-python-v0-0-10" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://pypi.python.org/pypi/oap/">oap library</a> is a transparent tool for working directly with image data from <a class="reference external" href="https://www.eol.ucar.edu/instruments/two-dimensional-optical-array-cloud-probe">Optical Array Probes</a>.
+It was initially developed for the preparation and classification of image data with neural networks.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                          <span class="mi">1</span>
+               <span class="mi">111111</span>                    <span class="mi">1221</span>  <span class="mi">21</span>
+             <span class="mi">112222111</span>       <span class="mi">112211</span> <span class="mi">2</span>    <span class="mi">11222331113</span>
+            <span class="mi">11211</span>  <span class="mi">1211</span>    <span class="mi">1122333222</span>     <span class="mi">12321</span>  <span class="mi">1211</span>
+            <span class="mi">1221</span>   <span class="mi">1211</span>    <span class="mi">1231</span>  <span class="mi">1221</span>      <span class="mi">2321</span>   <span class="mi">1221</span>
+            <span class="mi">1221</span>   <span class="mi">1221</span>    <span class="mi">1232</span>  <span class="mi">1221</span>      <span class="mi">2321</span>   <span class="mi">1121</span>
+            <span class="mi">1221</span>  <span class="mi">11221</span>    <span class="mi">1231</span>   <span class="mi">2321</span>     <span class="mi">13211</span>  <span class="mi">113</span>
+            <span class="mi">1112211211</span>     <span class="mi">1121</span>  <span class="mi">12321</span>    <span class="mi">1123332111</span>
+              <span class="mi">111111</span>        <span class="mi">111211</span> <span class="mi">121</span>    <span class="mi">1123211</span>
+                                           <span class="mi">1221</span>    <span class="mi">1</span>
+                                           <span class="mi">121</span>
+                                           <span class="mi">111</span>
+                                            <span class="mi">1</span>
+<span class="n">____________________________________________________________________</span>
+                                                      <span class="n">Version</span> <span class="mf">0.0</span><span class="o">.</span><span class="mi">10</span>
+</pre></div>
+</div>
+<p><strong>This software will be continuously developed further!</strong> Comments on this project are welcome! If you have any suggestions for improvement, you can simply write me an <a class="reference external" href="mailto:lucasgrulich&#37;&#52;&#48;gmx&#46;de">email</a> and I will try to implement them.</p>
+<p>I have already written a lot of other code that is not yet ready to be released. But little by little I will try to make the code available for everyone.</p>
+<p>At the current state, the decompression algorithm is only available for grayscale probes by <a class="reference external" href="https://www.dropletmeasurement.com/">Droplet Measurement Technologies (DMT)</a>.</p>
+<ul class="simple">
+<li><p>Decompression for DMT monoscale probes coming next! (Version 0.1.1)</p></li>
+<li><p>Sizing Method: Area Ratio</p></li>
+</ul>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="install.html#install"><span class="std std-ref">Installing</span></a> <strong>oap</strong> is as easy as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">oap</span>
+</pre></div>
+</div>
+<p>If you’re new to the <strong>oap</strong> library and/or Python, be sure to check out the <a class="reference internal" href="tutorial.html#tutorial"><span class="std std-ref">Tutorial</span></a> and the <a class="reference internal" href="docs.html#docs"><span class="std std-ref">Documentation</span></a>.</p>
+</div>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Download and Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#platforms-and-interpreters">Platforms and Interpreters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/decompress.html">Part 1: Decompress an imagefile of an Optical Array Probe</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docs/globals.html">Globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/console.html">Console Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/sizing.html">Sizing Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/files.html">File Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/mods.html">Array Modifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docs/helpers.html">Helper Functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">oap</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Download and Install</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="install.html" title="next chapter">Download and Install</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Lucas Grulich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download and Install &#8212; oap September 2020 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="oap - Optical Array Processing for Python (v0.0.10)" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="download-and-install">
+<span id="install"></span><h1>Download and Install<a class="headerlink" href="#download-and-install" title="Permalink to this headline">¶</a></h1>
+<p>You can always download the latest releases of <strong>oap</strong> from the project’s
+<a class="reference external" href="https://github.com/lcsgrlch/oap">github page</a>. The project is also on <a class="reference external" href="http://pypi.python.org/pypi/oap">PyPI</a> so the easiest way to install it is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">oap</span>
+</pre></div>
+</div>
+<p>I always recommend the use of virtual environments (e.g. <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> &amp; <a class="reference external" href="https://github.com/pypa/pipenv">pipenv</a> to avoid destroying your Python installation.</p>
+<p>But if you don’t want to work with virtual environments and still don’t want to mess up your system directories, install the library as a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">oap</span> <span class="o">--</span><span class="n">user</span>
+</pre></div>
+</div>
+<div class="section" id="platforms-and-interpreters">
+<h2>Platforms and Interpreters<a class="headerlink" href="#platforms-and-interpreters" title="Permalink to this headline">¶</a></h2>
+<p>The latest release supports:</p>
+<ul class="simple">
+<li><p><strong>Python</strong> &gt;= 3.7</p></li>
+<li><p>May also work on 3.5 and 3.6 (not tested)</p></li>
+</ul>
+<p>The <strong>oap</strong> library is <strong>not</strong> a pure-python library. Decompression algorithms and some other methods are written in C++.
+However, this project uses <a class="reference external" href="https://pythonwheels.com/">Python Wheels</a> and was pre-compiled for 64-bit architectures on following operating systems:</p>
+<ul class="simple">
+<li><p>Windows 10</p></li>
+</ul>
+<p>Anyway, if you want to use <strong>oap</strong> on a 32-bit architecture you need to compile the project first.
+Just clone the project from github and compile &amp; install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git clone ???
+cd oap
+python setup.py install
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">oap</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Download and Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#platforms-and-interpreters">Platforms and Interpreters</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docs.html">Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter"><strong>oap</strong> - Optical Array Processing for Python (v0.0.10)</a></li>
+      <li>Next: <a href="tutorial.html" title="next chapter">Tutorial</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Lucas Grulich.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/install.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
