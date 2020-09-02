@@ -1,5 +1,7 @@
 [![license](https://img.shields.io/pypi/l/oap)](LICENSE)
 [![version](https://img.shields.io/pypi/pyversions/oap)](https://pypi.python.org/pypi/oap/)
+[![Documentation Status](https://readthedocs.org/projects/oap/badge/?version=latest)](https://oap.readthedocs.io/en/latest/?badge=latest)
+[![PyPI](https://img.shields.io/pypi/v/oap)](https://pypi.python.org/pypi/oap/)
 ```
                                            1
                 111111                    1221  21
