@@ -1,0 +1,78 @@
+.. oap documentation master file, created by
+   sphinx-quickstart on Sun Aug 30 19:24:47 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+**oap** - Optical Array Processing for Python (v0.0.10)
+=======================================================
+
+The `oap library <https://pypi.python.org/pypi/oap/>`_ is a transparent tool for working directly with image data from `Optical Array Probes <https://www.eol.ucar.edu/instruments/two-dimensional-optical-array-cloud-probe>`_.
+It was initially developed for the preparation and classification of image data with neural networks.
+::
+                                             1
+                  111111                    1221  21
+                112222111       112211 2    11222331113
+               11211  1211    1122333222     12321  1211
+               1221   1211    1231  1221      2321   1221
+               1221   1221    1232  1221      2321   1121
+               1221  11221    1231   2321     13211  113
+               1112211211     1121  12321    1123332111
+                 111111        111211 121    1123211
+                                              1221    1
+                                              121
+                                              111
+                                               1
+   ____________________________________________________________________
+                                                         Version 0.0.10
+
+**This software will be continuously developed further!** Comments on this project are welcome! If you have any suggestions for improvement, you can simply write me an `email <mailto:lucasgrulich@gmx.de>`_ and I will try to implement them.
+
+I have already written a lot of other code that is not yet ready to be released. But little by little I will try to make the code available for everyone.
+
+At the current state, the decompression algorithm is only available for grayscale probes by `Droplet Measurement Technologies (DMT) <https://www.dropletmeasurement.com/>`_.
+
+* Decompression for DMT monoscale probes coming next! (Version 0.1.1)
+* Sizing Method: Area Ratio
+
+
+Getting Started
+---------------
+:ref:`Installing <install>` **oap** is as easy as:
+::
+   pip install oap
+
+If you’re new to the **oap** library and/or Python, be sure to check out the :ref:`Tutorial <tutorial>` and the :ref:`Documentation <docs>`.
+
+
+Contents
+--------
+.. toctree::
+   :maxdepth: 2
+
+   install
+
+
+.. toctree::
+   :maxdepth: 2
+
+   tutorial
+
+
+.. toctree::
+   :maxdepth: 2
+
+   docs
+
+.. toctree::
+   :maxdepth: 1
+
+   license
+
+
+..
+   Indices and tables
+   ------------------
+
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
