@@ -31,6 +31,7 @@ However, this project uses `Python Wheels <https://pythonwheels.com/>`_ and was 
 Anyway, if you want to use **oap** on a 32-bit architecture you need to compile the project first.
 Just clone the project from github and compile & install:
 ::
-    git clone ???
+    git clone https://github.com/lcsgrlch/oap
     cd oap
+    pipenv install
     python setup.py install
