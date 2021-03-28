@@ -24,7 +24,7 @@ Licensed under the MIT license (see `LICENSE` file)
 A transparent library for processing and analyzing individual
 images of Optical Array Probes (OAPs)
 
-Author:         Lucas Grulich (lucasgrulich@gmx.de)
+Author:         Lucas Grulich
 Last Update:    March 28, 2021
 ```
 
@@ -33,7 +33,7 @@ Last Update:    March 28, 2021
 The [__oap__ library](https://pypi.python.org/pypi/oap/) is a transparent tool for working directly with image data from [Optical Array Probes](https://www.eol.ucar.edu/instruments/two-dimensional-optical-array-cloud-probe).
 It was initially developed for the preparation and classification of image data with neural networks.
 
-__This software will be continuously developed further!__ Comments on this project are welcome! If you have any suggestions for improvement, you can simply write me an [email](mailto:lucasgrulich@gmx.de) and I will try to implement them.
+__This software is still in the alpha phase and will be further developed at irregular intervals!__ Comments on this project are always welcome! If you have suggestions for improvement, you can simply write me an [email](mailto:lucasgrulich@gmx.de) and I will try to implement them.
 
 At the current state, the decompression algorithm has only been implemented for grayscale probes by [Droplet Measurement Technologies (DMT)](https://www.dropletmeasurement.com/).
 
@@ -58,13 +58,19 @@ pip install oap --user
 
 A short code snippet that decompresses an OAP imagefile and outputs the first 100 images to the console:
 ```
-import oap
+from oap import Imagefile
 
-images = []
-oap.imagefile("Imagefile20200830120000", images=images)
+imagefile = Imagefile("Imagefile20200830120000")
+imagefile.plot()
 
-for image in images[:100]:
-    oap.print_array(image)
+array_list = imagefile.get_arrays(timespan=(20000, 22000),
+                                  area_ratio=(100, 200))
+
+# print all particles between second 20000 and 22000,
+# which are 100 to 200 μm in size.
+for o_array in array_list:
+    print(o_array.second)
+    o_array.print()
 ```
 
 ### Initialization & Compilation by yourself

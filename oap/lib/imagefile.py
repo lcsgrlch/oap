@@ -173,10 +173,10 @@ class Imagefile:
         plt.show()
         self.__reset_plot()
 
-    def plot_line(self, timespan=(0, 86400), area_ratio=(0, 1e9), x=(0, 1e9), y=(0, 1e9),
-                  hit_ratio=(0, 1), aspect_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
-                  timeshift=0, index=None, color=None, fill_color=None, opacity=1.0, linewidth=1.0, fill=True,
-                  title=None, label=None, xlabel=None, ylabel=None, grid=False, legend=False, log=False):
+    def plot(self, timespan=(0, 86400), area_ratio=(0, 1e9), x=(0, 1e9), y=(0, 1e9),
+             hit_ratio=(0, 1), aspect_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
+             timeshift=0, index=None, color=None, fill_color=None, opacity=1.0, linewidth=1.0, fill=True,
+             title=None, label=None, xlabel=None, ylabel=None, grid=False, legend=False, log=False):
         x, y = self.counts_per_second(timespan=timespan, area_ratio=area_ratio, x=x, y=y, hit_ratio=hit_ratio,
                                       aspect_ratio=aspect_ratio, alpha=alpha, c=c, r=r, timeshift=timeshift)
         if self.__plt_iterator is None:
