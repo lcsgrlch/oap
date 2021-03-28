@@ -250,7 +250,8 @@ decompress_grayscale_buffer(unsigned char *data,
                             int poisson,
                             int cluster,
                             int principal,
-                            PyObject *arrays_list)
+                            PyObject *arrays_list,
+                            PyObject *images_list)
 {
     /*
     Loop through compressed data to count the number of decompressed bits and
@@ -720,6 +721,7 @@ decompress(PyObject *module, PyObject *args, PyObject *kwargs)
     PyObject *x_sizes = Py_None;
     PyObject *y_sizes = Py_None;
     PyObject *arrays_list = Py_None;
+    PyObject *images_list = Py_None;
     PyObject *exclude_buffers = Py_None;
     PyObject *include_buffers = Py_None;
     int truncated = 0;
@@ -734,6 +736,7 @@ decompress(PyObject *module, PyObject *args, PyObject *kwargs)
                              "x_sizes",
                              "y_sizes",
                              "arrays",
+                             "images",
                              "exclude_buffers",
                              "include_buffers",
                              "truncated",
@@ -750,6 +753,7 @@ decompress(PyObject *module, PyObject *args, PyObject *kwargs)
                                      &x_sizes,
                                      &y_sizes,
                                      &arrays_list,
+                                     &images_list,
                                      &exclude_buffers,
                                      &include_buffers,
                                      &truncated,
@@ -844,7 +848,8 @@ decompress(PyObject *module, PyObject *args, PyObject *kwargs)
                                     poisson,
                                     cluster,
                                     principal,
-                                    arrays_list);
+                                    arrays_list,
+                                    images_list);
     }
     fclose(imagefile);
 

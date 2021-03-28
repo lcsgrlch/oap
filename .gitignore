@@ -1,6 +1,6 @@
 .idea/
 __backup__/
-/build/
+build/
 dist/
 oap.egg-info/
 .dev-note.md

@@ -25,10 +25,11 @@ process_particle_array(unsigned char *particle_array,
                        int poisson,
                        int cluster,
                        int principal,
-                       PyObject *arrays_list)
+                       PyObject *arrays_list,
+                       PyObject *images_list)
 {
 
-    // --- Poisson Spot Detection --------------------------------------------------------------------------------------
+    // --- Poisson spot detection --------------------------------------------------------------------------------------
 
     // Size of the Poisson Spot -> Zero indicates there is either no spot
     // or no closed circle around the Poisson Spot.
@@ -44,7 +45,7 @@ process_particle_array(unsigned char *particle_array,
 
 
 
-    // --- Calculate Principal Components ------------------------------------------------------------------------------
+    // --- Calculate principal components ------------------------------------------------------------------------------
     double hit_ratio = 0.0;
     double alpha_value = 0.0;
     double aspect_ratio = 0.0;
@@ -55,7 +56,8 @@ process_particle_array(unsigned char *particle_array,
     }
 
 
-    // --- Connected Componets ------------------------------------------------------
+
+    // --- Connected components (Cluser) -------------------------------------------------------------------------------
     int number_of_particle_cluster = 0;
 
     if (cluster)
@@ -71,7 +73,24 @@ process_particle_array(unsigned char *particle_array,
 
 
 
-    // --- Init Optical Array ------------------------------------------------------------------------------------------
+    // --- Append particle image to list -------------------------------------------------------------------------------
+    if (PyList_Check(images_list))
+    {
+        PyObject *particle_as_list = PyList_New(0);
+        for (int y=0; y<img_height; y++)
+        {
+            for (int x=0; x<64; x++)
+            {
+                PyList_Append(particle_as_list, PyLong_FromLong(particle_array[y*64+x]));
+            }
+        }
+        PyList_Append(images_list, particle_as_list);
+        Py_DECREF(particle_as_list);
+    }
+
+
+
+    // --- Init OpticalArray -------------------------------------------------------------------------------------------
     if (PyList_Check(arrays_list))
     {
         OpticalArrayObject *optical_array;
