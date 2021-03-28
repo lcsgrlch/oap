@@ -19,7 +19,7 @@ master_doc = 'index'
 # -- Project information -----------------------------------------------------
 
 project = 'oap'
-copyright = '2020, Lucas Grulich'
+copyright = '2021, Lucas Grulich'
 author = 'Lucas Grulich'
 
 # The full version, including alpha/beta/rc tags
