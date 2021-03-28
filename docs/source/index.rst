@@ -14,9 +14,7 @@ Introduction
 The `oap <https://pypi.python.org/pypi/oap/>`_ library is a transparent tool, written in `Python <https://www.python.org/>`_ and `C <https://en.wikipedia.org/wiki/C_(programming_language)>`_, for working directly with image data from `Optical Array Probes <https://www.eol.ucar.edu/instruments/two-dimensional-optical-array-cloud-probe>`_.
 It was initially developed for the preparation and classification of image data with neural networks.
 
-**This software will be continuously developed further!** Comments on this project are welcome! If you have any suggestions for improvement, you can simply write me an `email <mailto:lucasgrulich@gmx.de>`_ and I will try to implement them.
-
-I have already written a lot of other code that is not yet ready to be released. But little by little I will try to make the code available for everyone.
+**This software is still in the alpha phase and will be further developed at irregular intervals!** Comments on this project are always welcome! If you have suggestions for improvement, you can simply write me an `email <mailto:lucasgrulich@gmx.de>`_ and I will try to implement them.
 
 At the current state, the decompression algorithm is only available for grayscale probes by `Droplet Measurement Technologies (DMT) <https://www.dropletmeasurement.com/>`_.
 

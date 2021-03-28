@@ -8,7 +8,7 @@ The following code decompresses a sample image file and then prints the first 10
     import oap
 
     images = []
-    oap.imagefile("Imagefile20200830120000", images=images)
+    oap.decompress("Imagefile20200830120000", images=images)
 
     for image in images[:100]:
         oap.print_array(image)

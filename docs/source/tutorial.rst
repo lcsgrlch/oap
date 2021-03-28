@@ -9,3 +9,4 @@ Here's a little tutorial to get you started with **oap** in no time:
    :maxdepth: 1
 
    tutorial/decompress
+   tutorial/imagefile
