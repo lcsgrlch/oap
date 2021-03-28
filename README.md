@@ -30,7 +30,7 @@ Last Update:    March 28, 2021
 
 ### Introduction
 
-The [__oap__ library](https://pypi.python.org/pypi/oap/) is a transparent tool for working directly with image data from [Optical Array Probes](https://www.eol.ucar.edu/instruments/two-dimensional-optical-array-cloud-probe).
+The [__oap__](https://pypi.python.org/pypi/oap/) library is a transparent tool, written in [Python](https://www.python.org/) and [C](https://en.wikipedia.org/wiki/C_(programming_language)), for working directly with image data from [Optical Array Probes](https://www.eol.ucar.edu/instruments/two-dimensional-optical-array-cloud-probe).
 It was initially developed for the preparation and classification of image data with neural networks.
 
 __This software is still in the alpha phase and will be further developed at irregular intervals!__ Comments on this project are always welcome! If you have suggestions for improvement, you can simply write me an [email](mailto:lucasgrulich@gmx.de) and I will try to implement them.
