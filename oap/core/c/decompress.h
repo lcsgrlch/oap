@@ -212,6 +212,7 @@ decompress_monoscale_buffer(unsigned char *data)
                                false,
                                false,
                                false,
+                               NULL,
                                NULL);
 
         /*
@@ -676,7 +677,8 @@ decompress_grayscale_buffer(unsigned char *data,
                                poisson,
                                cluster,
                                principal,
-                               arrays_list);
+                               arrays_list,
+                               images_list);
 
         /*
          *        * ------------------------------------ *
@@ -747,7 +749,7 @@ decompress(PyObject *module, PyObject *args, PyObject *kwargs)
                              "buffer_id",
                              NULL};
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "s|OOOOOOpppppp", kwlist,
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "s|OOOOOOOpppppp", kwlist,
                                      &filename,
                                      &timeframes,
                                      &x_sizes,
