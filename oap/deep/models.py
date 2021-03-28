@@ -2,8 +2,8 @@
 Various models and functions for classification of optical array probe data.
 """
 
-from keras import Input, Model
-from keras import backend as k, layers
+from tensorflow.keras.models import Model
+from tensorflow.keras import backend as k, layers
 from oap.__conf__ import SLICE_SIZE
 
 
@@ -50,7 +50,7 @@ def build_srnn_v1(filters=32, kernel_size=3, stacks=3, y_dim=SLICE_SIZE, x_dim=S
     Version 1.0: This model was used for the "Automatic shape detection of ice crystals"-paper.
     """
 
-    input_tensor = Input(shape=(y_dim, x_dim, 1))
+    input_tensor = layers.Input(shape=(y_dim, x_dim, 1))
 
     net = layers.Conv2D(filters=filters, kernel_size=kernel_size,
                         padding='same', input_shape=(y_dim, x_dim, 1))(input_tensor)
@@ -88,7 +88,7 @@ def build_srnn_v2(filters=32, kernel_size=3, stacks=3, y_dim=SLICE_SIZE, x_dim=S
     Version 2.0: The penultimate fully connected layer was removed in order to prevent too fast overfitting.
     """
 
-    input_tensor = Input(shape=(y_dim, x_dim, 1))
+    input_tensor = layers.Input(shape=(y_dim, x_dim, 1))
 
     net = layers.Conv2D(filters=filters, kernel_size=kernel_size,
                         padding='same', input_shape=(y_dim, x_dim, 1))(input_tensor)

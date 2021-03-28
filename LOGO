@@ -1,0 +1,23 @@
+                                           1
+                111111                    1221  21
+              112222111       112211 2    11222331113
+             11211  1211    1122333222     12321  1211
+             1221   1211    1231  1221      2321   1221
+             1221   1221    1232  1221      2321   1121
+             1221  11221    1231   2321     13211  113
+             1112211211     1121  12321    1123332111
+               111111        111211 121    1123211
+                                            1221    1
+                                            121
+                                            111
+                                             1
+____________________________________________________________________
+                                                      Version 0.0.11
+Optical Array Processing (oap)
+Licensed under the MIT license (see `LICENSE` file)
+
+A transparent library for processing and analyzing individual
+images of Optical Array Probes (OAPs)
+
+Author:         Lucas Grulich (lucasgrulich@gmx.de)
+Last Update:    March 28, 2021

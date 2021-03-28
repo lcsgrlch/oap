@@ -8,10 +8,10 @@ twine = "*"
 sphinx = "*"
 
 [packages]
-keras="*"
-numpy="*"
+matplotlib = "*"
+numpy = "*"
 Pillow = "*"
 tensorflow = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"

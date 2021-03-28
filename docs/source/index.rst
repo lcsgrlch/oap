@@ -3,27 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-**oap** - Optical Array Processing for Python (v0.0.10)
-=======================================================
+**oap** - Optical Array Processing for Python
+=============================================
+
+.. literalinclude:: ../../LOGO
 
 The `oap library <https://pypi.python.org/pypi/oap/>`_ is a transparent tool for working directly with image data from `Optical Array Probes <https://www.eol.ucar.edu/instruments/two-dimensional-optical-array-cloud-probe>`_.
 It was initially developed for the preparation and classification of image data with neural networks.
-::
-                                             1
-                  111111                    1221  21
-                112222111       112211 2    11222331113
-               11211  1211    1122333222     12321  1211
-               1221   1211    1231  1221      2321   1221
-               1221   1221    1232  1221      2321   1121
-               1221  11221    1231   2321     13211  113
-               1112211211     1121  12321    1123332111
-                 111111        111211 121    1123211
-                                              1221    1
-                                              121
-                                              111
-                                               1
-   ____________________________________________________________________
-                                                         Version 0.0.10
 
 **This software will be continuously developed further!** Comments on this project are welcome! If you have any suggestions for improvement, you can simply write me an `email <mailto:lucasgrulich@gmx.de>`_ and I will try to implement them.
 
@@ -31,8 +17,7 @@ I have already written a lot of other code that is not yet ready to be released.
 
 At the current state, the decompression algorithm is only available for grayscale probes by `Droplet Measurement Technologies (DMT) <https://www.dropletmeasurement.com/>`_.
 
-* Decompression for DMT monoscale probes coming next! (Version 0.1.1)
-* Sizing Method: Area Ratio
+* Decompression for DMT monoscale probes coming next!
 
 
 Getting Started

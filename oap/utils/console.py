@@ -39,7 +39,7 @@ def print_array(array, frame=False, scales=True, slice_size=SLICE_SIZE):
                 print("  ", end='')
             else:
                 if scales:
-                    print(str(array[y*slice_size+x]) + ' ', end='')
+                    print(str(int(array[y*slice_size+x])) + ' ', end='')
                 else:
                     if array[y*slice_size+x] == MARKER['poisson']:
                         print("+ ", end='')

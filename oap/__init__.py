@@ -13,24 +13,20 @@
                                             111
                                              1
 ____________________________________________________________________
-                                                      Version 0.0.10
-Optical Array Processing (oap)
-Licensed under the MIT license (see `LICENSE` file)
-
-A transparent library for processing and analyzing individual
-images of Optical Array Probes (OAPs)
-
-Author:         Lucas Grulich (lucasgrulich@gmx.de)
-Last Update:    02. September 2020
 """
 
 # Importing the C++ extension (oap.core)
 try:
-    from oap.core.factory import imagefile
+    from __oap_c.core import (
+        decompress,
+        OpticalArray
+    )
 except ModuleNotFoundError:
-    print("Catching ModuleNotFoundError: The C++ extension must be compiled first")
+    error_msg = "C extension of oap library is not compiled yet!"
+    print("Catching ModuleNotFoundError:", error_msg)
 
 from oap.__conf__ import (
+    __version__,
     UNDEFINED,
     INDEFINABLE,
     ERRONEOUS,
@@ -38,11 +34,13 @@ from oap.__conf__ import (
     COLUMN,
     ROSETTE,
     DENDRITE,
-    PLATE
+    PLATE,
 )
+from oap.lib.imagefile import Imagefile, load_imagefile
 from oap.utils import (
     barycenter,
     adjust_y,
+    center_particle,
     clip_y,
     flip_x,
     flip_y,
@@ -63,5 +61,5 @@ from oap.utils.sizing import (
     sphere_volume,
     sphere_surface,
     hexprism_volume,
-    hexprism_surface
+    hexprism_surface,
 )

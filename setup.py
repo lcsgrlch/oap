@@ -10,10 +10,10 @@ import os
 with open("README.md", "r") as f:
     long_description = f.read()
 
-module = Extension(
-    name="oap.core.factory",
-    sources=[os.path.join("oap", "core", "factory.cpp")],
-    language="c++",
+core = Extension(
+    name="__oap_c.core",
+    sources=[os.path.join("oap", "core", "c", "__init__.c")],
+    language="c",
 )
 
 setup(
@@ -26,11 +26,14 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/lcsgrlch/oap",
     packages=find_namespace_packages(),
+    package_data={
+        "oap.deep": ["models/*.hdf5"],
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.7',
-    ext_modules=[module],
+    ext_modules=[core],
 )

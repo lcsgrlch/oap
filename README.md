@@ -17,7 +17,7 @@
                                             111
                                              1
 ____________________________________________________________________
-                                                      Version 0.0.10
+                                                      Version 0.0.11
 Optical Array Processing (oap)
 Licensed under the MIT license (see `LICENSE` file)
 
@@ -25,7 +25,7 @@ A transparent library for processing and analyzing individual
 images of Optical Array Probes (OAPs)
 
 Author:         Lucas Grulich (lucasgrulich@gmx.de)
-Last Update:    02. September 2020
+Last Update:    March 28, 2021
 ```
 
 ### Introduction

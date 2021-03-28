@@ -240,6 +240,7 @@ def flip_y(array, slice_size=SLICE_SIZE):
     return _flip_array(array, 0, slice_size=slice_size)
 
 
+# ToDo: not implemented
 def monochromatic(array, color=MONOSCALE_SHADOWLEVEL, as_type=None, slice_size=SLICE_SIZE):
     """
     Converts a greyscale optical-array with different colors for their shadow levels,
@@ -261,19 +262,21 @@ def monochromatic(array, color=MONOSCALE_SHADOWLEVEL, as_type=None, slice_size=S
 
     :return:            new optical-array - every pixel has the same color
     """
-    array, data_type, slice_size = check_array_type(array, slice_size)
+    # array, data_type, slice_size = check_array_type(array, slice_size)
 
-    new_array = np.zeros(len(array), dtype=int)
-    for y in range(int(len(array)/slice_size)):
-        for x in range(slice_size):
-            if array[y*slice_size+x] != 0 and array[y * slice_size + x] != '0':
-                if array[y*slice_size+x] in [1, 2, 3]:
-                    new_array[y*slice_size+x] = color
-                elif array[y*slice_size+x] in ['1', '2', '3']:
-                    new_array[y*slice_size+x] = str(color)
-                else:
-                    new_array[y*slice_size+x] = array[y*slice_size+x]
-    return convert_array_to_type(new_array, as_type=as_type if as_type else data_type, slice_size=slice_size)
+    array[array >= 1] = color
+
+    # new_array = np.zeros(len(array), dtype=int)
+    # for y in range(int(len(array)/slice_size)):
+    #     for x in range(slice_size):
+    #         if array[y*slice_size+x] != 0 and array[y * slice_size + x] != '0':
+    #             if array[y*slice_size+x] in [1, 2, 3]:
+    #                 new_array[y*slice_size+x] = color
+    #             elif array[y*slice_size+x] in ['1', '2', '3']:
+    #                 new_array[y*slice_size+x] = str(color)
+    #             else:
+    #                 new_array[y*slice_size+x] = array[y*slice_size+x]
+    # return convert_array_to_type(array, as_type=as_type if as_type else data_type, slice_size=slice_size)
 
 
 def monoscale(array, color=MONOSCALE_SHADOWLEVEL, as_type=None, slice_size=SLICE_SIZE):
