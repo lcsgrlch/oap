@@ -61,19 +61,28 @@ A short code snippet that decompresses an OAP imagefile and outputs the first 10
 from oap import Imagefile
 
 imagefile = Imagefile("Imagefile20200830120000")
+
+# search for columns and rosettes
+imagefile.classify()
+
+# plot number of particles per flight second
 imagefile.plot()
 
+# plot number of rosettes per flight second
+imagefile.plot(r=(0.5, 1))
+
+# get all optical arrays containing particles of size
+# 100 to 200 micrometers (area ratio) that were recorded
+# between flight seconds 20000 and 22000.
 array_list = imagefile.get_arrays(timespan=(20000, 22000),
                                   area_ratio=(100, 200))
 
-# print all particles between second 20000 and 22000,
-# which are 100 to 200 μm in size.
-for o_array in array_list:
-    print(o_array.second)
-    o_array.print()
+# print particle images
+for array in array_list:
+    array.print()
 ```
 
-### Initialization & Compilation by yourself
+### Initialization & Compilation
 
 #### Prerequisites
 
