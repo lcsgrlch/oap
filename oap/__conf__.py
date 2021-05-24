@@ -1,5 +1,5 @@
 __author__ = "Lucas Grulich (lucasgrulich@gmx.de)"
-__version__ = "0.0.11"
+__version__ = "0.0.12"
 
 # --- Globals ----------------------------------------------------------------------------------------------------------
 MONOSCALE_SHADOWLEVEL = 1

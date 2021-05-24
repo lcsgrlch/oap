@@ -102,17 +102,19 @@ def __floodfill(array, x, y, marker, colors, diagonal=False, horizontal=True, sl
 
         if array[y*slice_size+x] != marker:
             array[y*slice_size+x] = marker
-
-            if horizontal:
-                __floodfill(array, x + 1, y, marker, colors, diagonal, horizontal, slice_size)
-                __floodfill(array, x - 1, y, marker, colors, diagonal, horizontal, slice_size)
-                __floodfill(array, x, y + 1, marker, colors, diagonal, horizontal, slice_size)
-                __floodfill(array, x, y - 1, marker, colors, diagonal, horizontal, slice_size)
-            if diagonal:
-                __floodfill(array, x + 1, y + 1, marker, colors, diagonal, horizontal, slice_size)
-                __floodfill(array, x + 1, y - 1, marker, colors, diagonal, horizontal, slice_size)
-                __floodfill(array, x - 1, y + 1, marker, colors, diagonal, horizontal, slice_size)
-                __floodfill(array, x - 1, y - 1, marker, colors, diagonal, horizontal, slice_size)
+            try:
+                if horizontal:
+                    __floodfill(array, x + 1, y, marker, colors, diagonal, horizontal, slice_size)
+                    __floodfill(array, x - 1, y, marker, colors, diagonal, horizontal, slice_size)
+                    __floodfill(array, x, y + 1, marker, colors, diagonal, horizontal, slice_size)
+                    __floodfill(array, x, y - 1, marker, colors, diagonal, horizontal, slice_size)
+                if diagonal:
+                    __floodfill(array, x + 1, y + 1, marker, colors, diagonal, horizontal, slice_size)
+                    __floodfill(array, x + 1, y - 1, marker, colors, diagonal, horizontal, slice_size)
+                    __floodfill(array, x - 1, y + 1, marker, colors, diagonal, horizontal, slice_size)
+                    __floodfill(array, x - 1, y - 1, marker, colors, diagonal, horizontal, slice_size)
+            except:
+                return
     return
 
 
@@ -611,7 +613,7 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
     else:
         alpha = radians(90.0)
 
-    # --- Polygon ---
+    # --- Polygon ------------------------------------------------------------------------------------------------------
     """
     scale_1 = 0.75
     scale_2 = 1.0
@@ -701,7 +703,7 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
     # Calculate the mean and the variance of vector lengths.
     # mean = (major_axis + minor_axis) / 2.0
     # variance = ((major_axis - mean) * (major_axis - mean) + (minor_axis - mean) * (minor_axis - mean)) / 2.0
-    hit_ratio = ellipse_hits / float(ellipse_misses + ellipse_hits) * 100
+    hit_ratio = ellipse_hits / float(ellipse_misses + ellipse_hits)
     alpha_value = degrees(alpha)
     aspect_ratio = major_axis / minor_axis
 
@@ -717,12 +719,13 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
             plt.scatter(points[1][:, 0], points[1][:, 1], c="#ff0000", alpha=0.75, marker="s")
         if plot[2] == 1 and len(points[2]):
             plt.scatter(points[2][:, 0], points[2][:, 1], c="#cc3f3f", alpha=0.75, marker="s")
-        if plot[3] == 0 and len(points[2]):
+        if plot[3] == 1 and len(points[2]) and False:
             plt.scatter(points[2][:, 0], points[2][:, 1], c="#ff0000", alpha=0.75, marker="s")
 
         array = np.array(array)
         vanish_poisson(array)
         image = np.reshape(array, (int(len(array) / 64), 64))
+
         plt.imshow(image, cmap="Greys_r")
 
         if y_normal < 0:
@@ -747,23 +750,28 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
 
         # Plot Principal Components.
         x, y, u, v = zip(*vectors)
-        plt.quiver(x_bary, y_bary, 0, -y_bary, angles='xy', scale_units='xy', scale=1, width=0.002, headwidth=1,
-                   headlength=0, color="orange")
-        plt.quiver(x, y, u, v, angles='xy', scale_units='xy', scale=1, width=0.005, headwidth=1,
-                   color=["#13a2cd", "#13a2cd", "red", "#13a2cd"])
-        plt.plot(x_bary, y_bary, marker="o", color="orange")
+        plt.quiver(x_bary, y_bary, 0, -y_bary-0.5, angles='xy', scale_units='xy', scale=1, width=0.0075, headlength=0, headwidth=1,
+                   color="grey")
+        plt.quiver(x, y, u, v, angles='xy', scale_units='xy', scale=1, width=0.01, headlength=0, headwidth=1,
+                   color=["#1f77b4", "#1f77b4", "#ff7f0e", "#ff7f0e"], label="Major Axis")
+        plt.scatter(x_bary, y_bary, marker="o", color="#1f77b4", label="Barycenter")
 
-        plt.text(x=txt_center_x, y=txt_center_y-1, s=f"{round(alpha_value, 3)}°", verticalalignment="bottom", horizontalalignment=horizontal, color="red")
-        plt.text(x=0, y=-10, s=f"Hit Ratio: {round(hit_ratio, 3)}\nAspect Ratio: {round(aspect_ratio, 3)}",
-                 color="white", verticalalignment="bottom")
+        plt.text(x=txt_center_x, y=txt_center_y-0.5, s=f"{round(alpha_value, 3)}°", verticalalignment="bottom", horizontalalignment=horizontal, color="#ff7f0e")
+        #plt.text(x=0, y=-10, s=f"Hit Ratio: {round(hit_ratio, 3)}\nAspect Ratio: {round(aspect_ratio, 3)}",
+        #         color="white", verticalalignment="bottom")
 
         if plot[3] == 1:
             # Plot Polygon.
             polygon_verts = len(polygon)
             for i in range(polygon_verts):
-                plt.plot((polygon[i % polygon_verts][0], polygon[(i + 1) % polygon_verts][0]),
-                         (polygon[i % polygon_verts][1], polygon[(i + 1) % polygon_verts][1]),
-                         linewidth=1.4, c="#9dff00")
+                if i == 0:
+                    plt.plot((polygon[i % polygon_verts][0], polygon[(i + 1) % polygon_verts][0]),
+                             (polygon[i % polygon_verts][1], polygon[(i + 1) % polygon_verts][1]),
+                             linewidth=1.2, c="#d62728", label="Rectangle")
+                else:
+                    plt.plot((polygon[i % polygon_verts][0], polygon[(i + 1) % polygon_verts][0]),
+                             (polygon[i % polygon_verts][1], polygon[(i + 1) % polygon_verts][1]),
+                             linewidth=1.2, c="#d62728", )
 
         # Plot Ellipse.
         array_length = 1000
@@ -775,21 +783,30 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
 
         plt.plot((x * cos(alpha) - sin(alpha) * y) + x_bary,
                  (x * sin(alpha) + cos(alpha) * y) + y_bary,
-                 linewidth=1.4, c="#9dff00")
+                 linewidth=1.8, c="#2ca02c", label="Ellipse")
 
+        from matplotlib.ticker import MultipleLocator
         ax = plt.gca()
-        ax.set_facecolor("#044255")
+        ax.set_facecolor("black")
         ax.set_aspect(1)
 
-        plt.xlim([-6, 69])
-        plt.ylim([int(len(array)/slicesize) + 3, -20])
+        #plt.xlabel("Diode Array")
+        #plt.ylabel("Flight Direction")
+        ax.xaxis.set_minor_locator(MultipleLocator(1))
+        ax.yaxis.set_minor_locator(MultipleLocator(1))
+        #ax.xaxis.set_major_locator(MultipleLocator(5))
+        #ax.yaxis.set_major_locator(MultipleLocator(5))
 
-        ax.set_xticks(np.arange(-.5, 65, 5))
-        ax.set_yticks(np.arange(-.5, int(len(array)/slicesize), 5))
-        ax.set_xticklabels(np.arange(0, 65+0.5, 5, dtype=int))
-        ax.set_yticklabels(np.arange(0, int(len(array)/slicesize)+0.5, 5, dtype=int))
+        plt.xlim(plot[4])
+        #ax.set_yticks(np.arange(-.5, int(len(array)/slicesize), 5))
+        #ax.set_xticklabels(np.arange(0, 65+0.5, 5, dtype=int))
+        #ax.set_yticklabels(np.arange(0, int(len(array)/slicesize)+0.5, 5, dtype=int))
 
-        plt.show()
+        #plt.axes().yaxis.set_minor_locator(MultipleLocator(1))
+
+        #plt.grid(which='minor', color='red', linestyle='-', linewidth=0.5, alpha=0.5)
+        # plt.legend()
+        # plt.savefig(plot[4])
 
     return hit_ratio, \
            __mse(one_color_array, ellipse_array), \
@@ -829,3 +846,92 @@ def connected_components(array, slicesize=SLICE_SIZE):
                 marker += 1
 
     return number_of_components
+
+
+# ToDo: recursive depth
+def __poisson(array, x, y, counter=0):
+    if counter > 64*30: # ToDo: Extremely bad solution -> think of an other algorithm for poisson detection!
+        return
+    if 0 <= x < 64 and 0 <= y < (len(array) / 64):
+        if array[y*64+x] != 0:
+            return
+        if array[y*64+x] != 7:
+            array[y*64+x] = 7
+            try:
+                __poisson(array, x + 1, y, counter+1)
+                __poisson(array, x - 1, y, counter+1)
+                __poisson(array, x, y + 1, counter+1)
+                __poisson(array, x, y - 1, counter+1)
+            except:
+                return
+        return
+    return
+
+
+# ToDo: check_y doesn't work on images with frames (not clipped)
+def poisson_spot(array, sizing=False, check_y=False, slice_size=SLICE_SIZE):
+    """
+    If the particle has a Poisson Spot, the function fills the spot with a marker.
+    Returns also the Poisson diameter, if sizing is True.
+
+    If poisson spot is not closed in x-direction it is not possible to measure the
+    spot size. Hence, the marker will be removed. If checkAlsoY is true the poisson spot
+    must be closed in y direction too.
+
+    :param array:       optical array (particle image)
+    :type array:        numpy array (1 dimensional) or list or string
+
+    --- optional params ---
+    :param sizing:      if True and there is a spot -> returns spot size in pixels
+    :type sizing:       boolean
+
+    :param check_y:     if True -> checks the first and last slice, if spot is closed
+    :type check_y :     boolean
+
+    :param slice_size:  width of the optical array (number of diodes)
+    :type slice_size:   integer
+
+    :return:            True or spot size in pixels (if spot is closed) or False
+    """
+    y_bary, x_bary = barycenter(array, coordinates=True, slice_size=slice_size)
+    __poisson(array, x_bary, y_bary)
+
+    # Check if the Poisson Spot is closed. If the edges of a particle images are
+    # colored with the Poisson Spot marker, the Spot cannot be closed.
+    spot_is_closed = True
+
+    for y in range(int(len(array) / slice_size)):
+        if array[y * slice_size] == MARKER['poisson'] or array[y * slice_size + (slice_size - 1)] == MARKER['poisson']:
+            spot_is_closed = False
+
+    if spot_is_closed and check_y:
+        for x in range(slice_size):
+            if array[x] == MARKER['poisson']\
+                    or array[int(((len(array) / slice_size) - 1) * slice_size + x)] == MARKER['poisson']:
+                spot_is_closed = False
+
+    # If the spot is not closed, the Poisson Spot marker gets deleted.
+    if not spot_is_closed:
+        for y in range(int(len(array) / slice_size)):
+            for x in range(slice_size):
+                if array[y * slice_size + x] == MARKER['poisson']:
+                    array[y * slice_size + x] = 0
+
+    # If sizing is True, the function returns the Poisson Spot diameter.
+    if sizing and spot_is_closed:
+        min_poisson_index = slice_size - 1
+        max_poisson_index = 0
+        for y in range(int(len(array) / slice_size)):
+            for x in range(slice_size):
+                if array[y * slice_size + x] == MARKER['poisson'] and x > max_poisson_index:
+                    max_poisson_index = x
+                if array[y * slice_size + x] == MARKER['poisson'] and x < min_poisson_index:
+                    min_poisson_index = x
+        poisson_diameter = max_poisson_index - min_poisson_index + 1
+        poisson_diameter = poisson_diameter if poisson_diameter > 0 else 0
+        return poisson_diameter
+    else:
+        if spot_is_closed:
+            return True
+        else:
+            return False

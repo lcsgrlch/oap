@@ -35,7 +35,7 @@ class Imagefile:
         self.__n_figures = None
         self.__plt_iterator = None
         self.__fig = None
-        self.__axes = None
+        self.axes = None
         self.__auto_plot = None
 
         self.arrays = []
@@ -53,6 +53,8 @@ class Imagefile:
                                                   principal=principal,
                                                   status=status,
                                                   buffer_id=buffer_id)
+            self.min_time = self.arrays[0].second   # ToDo: empty image files! Also check for weird values!
+            self.max_time = self.arrays[-1].second  # ToDo: update this when usind __add__
 
     def __len__(self):
         return self.number_of_particles
@@ -134,39 +136,39 @@ class Imagefile:
         self.__n_figures = None
         self.__plt_iterator = None
         self.__fig = None
-        self.__axes = None
+        self.axes = None
         self.__auto_plot = None
 
     def __adjust_plot(self, i, title, xlabel, ylabel, grid, legend, log, index):
 
         if title is not None:
-            self.__axes[i][0].title.set_text(title)
+            self.axes[i][0].title.set_text(title)
         if xlabel is not None:
-            self.__axes[i][0].set_xlabel(xlabel)
+            self.axes[i][0].set_xlabel(xlabel)
         if ylabel is not None:
-            self.__axes[i][0].set_ylabel(ylabel)
+            self.axes[i][0].set_ylabel(ylabel)
         if grid:
-            self.__axes[i][0].grid()
+            self.axes[i][0].grid()
         if legend:
-            self.__axes[i][0].legend()
+            self.axes[i][0].legend()
         if log:
-            self.__axes[i][0].set_yscale("log")
+            self.axes[i][0].set_yscale("log")
         if index is None:
             self.__plt_iterator += 1
         if self.__auto_plot and self.__plt_iterator == self.__n_figures:
             self.show_plot()
 
-    def init_plot(self, n_figures, tight_layout=True, auto_plot=False):
-        self.__n_figures = n_figures
+    def init_plot(self, figures, tight_layout=True, auto_plot=False, figsize=None, dpi=None):
+        self.__n_figures = figures
         self.__plt_iterator = 0
         # Squeeze must equal False for the variable self.__axes to be a 2d array for any number of subplots.
-        self.__fig, self.__axes = plt.subplots(self.__n_figures, squeeze=False)
+        self.__fig, self.axes = plt.subplots(self.__n_figures, squeeze=False, figsize=figsize, dpi=dpi)
         self.__auto_plot = auto_plot
         if tight_layout:
             plt.tight_layout()
 
-    def save_plot(self, filename):
-        plt.savefig(filename)
+    def save_plot(self, filename, dpi=None):
+        plt.savefig(filename, dpi=dpi)
         self.__reset_plot()
 
     def show_plot(self):
@@ -182,10 +184,10 @@ class Imagefile:
         if self.__plt_iterator is None:
             self.init_plot(1, tight_layout=False, auto_plot=True)
         i = self.__plt_iterator if index is None else index
-        self.__axes[i][0].plot(x, y, color=color, alpha=opacity, label=label, linewidth=linewidth)
+        self.axes[i][0].plot(x, y, color=color, alpha=opacity, label=label, linewidth=linewidth)
         if fill:
-            self.__axes[i][0].fill_between(x, np.zeros(len(y)), y, alpha=opacity,
-                                           color=color if fill_color is None else fill_color)
+            self.axes[i][0].fill_between(x, np.zeros(len(y)), y, alpha=opacity,
+                                         color=color if fill_color is None else fill_color)
         self.__adjust_plot(i, title, xlabel, ylabel, grid, legend, log, index)
 
     def plot_count(self, timespan=(0, 86400), area_ratio=(0, 1e9), x=(0, 1e9), y=(0, 1e9),
@@ -197,7 +199,7 @@ class Imagefile:
         if self.__plt_iterator is None:
             self.init_plot(1, tight_layout=False, auto_plot=True)
         i = self.__plt_iterator if index is None else index
-        self.__axes[i][0].bar(x, y, align="center", width=1, color=color, alpha=opacity, label=label)
+        self.axes[i][0].bar(x, y, align="center", width=1, color=color, alpha=opacity, label=label)
         self.__adjust_plot(i, title, xlabel, ylabel, grid, legend, log, index)
 
     # fix color bar !!!
@@ -216,8 +218,8 @@ class Imagefile:
         colors = plt.cm.get_cmap(cmap, color_res)
         z = np.divide(y1, y0, out=np.zeros(y1.shape, dtype=float), where=y0 != 0)
         z_norm = np.interp(z, (z.min(), z.max()), (0, 1))
-        self.__axes[i][0].bar(x0, y0, align="center", width=1, alpha=opacity, label=label,
-                              color=colors(z) if color_fixed else colors(z_norm))
+        self.axes[i][0].bar(x0, y0, align="center", width=1, alpha=opacity, label=label,
+                            color=colors(z) if color_fixed else colors(z_norm))
 
         # Create a mappable without a visual representation to
         # apply to the color bar. Typical matplotlib crap...
@@ -225,7 +227,7 @@ class Imagefile:
                                                                       z.max() if color_fixed else z.max()))
         # Using make_axes_locatable() to subdivide the axis. Otherwise it is not possible to
         # set the position of the color bar to the top.
-        divider = make_axes_locatable(self.__axes[i][0])
+        divider = make_axes_locatable(self.axes[i][0])
         cax = divider.new_vertical(size="3%", pad=0)    # ToDo: make percentage adjustable!
         # Add divider to figure!
         self.__fig.add_axes(cax)
@@ -235,5 +237,5 @@ class Imagefile:
         # Not needed at the moment, but I'll leave it in the code in case I need it.
         # Sadly, it's a pain in the ass to slog through the matplotlib doc.
         # colorbar.ax.set_xticklabels([z.min(), z.max()]) # xticks because of horizontal orientation
-        # colorbar.ax.tick_params(labelsize=10)
+        colorbar.ax.tick_params(labelsize=8)    # ToDo: make adjustable
         self.__adjust_plot(i, title, xlabel, ylabel, grid, legend, log, index)
