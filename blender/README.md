@@ -8,7 +8,7 @@ __Note__: Code was tested with Blender version < 2.
 To start the rendering, proceed as follows:
 
 #### In Blender:
-1. (Optional) Create new 3d Model. Make sure the model uses the OpaqueBlenderRender material.
+1. (Optional) Create new 3d Model in empty layer. Make sure the model uses the OpaqueBlenderRender material.
 
 #### In Python script:
 2. (Optional) Add particle tuple to the PARTICLES list and add configurations for this new particle

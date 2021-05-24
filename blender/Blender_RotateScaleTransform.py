@@ -16,6 +16,10 @@ In Blender:
 4. (Optional) Change the resolution in pixels.
 5. Reload and run script in Blender.
 
+Note: There are 3 different methods for rendering 3 different particle types. Which method is used depends
+      on the particle symmetry. Spheres as well as column-like particles each use their own methods.
+      Furthermore, asymmetric particles use their own method, too.
+
 Author:  Lucas Grulich
 Date:    October 2017
 """
@@ -84,6 +88,8 @@ def scale_and_rotate_object(obj, scale, volume, area, X, Y, Z, directory, render
     """
     Scales and rotates an object. The distance and the scale are fixed,
     otherwise the object would maybe touch the optical array in the scene.
+
+    For asymmetric particles.
     """
     obj.scale = scale
     obj.location = (0, 0, 0)
@@ -108,6 +114,8 @@ def scale_transform_and_rotate_object(obj, width, length, volume, directory, ren
     """
     Scales, transforms and rotates an object. The start location is fixed,
     otherwise the object can touch the optical array in the scene.
+
+    For column-like particles.
     """
     obj.scale = (width, width, length)
     obj.location = (0, 0, 0)
@@ -133,6 +141,7 @@ def scale_transform_and_rotate_object(obj, width, length, volume, directory, ren
 def scale_and_transform_object(obj, directory, render=False):
     """
     Scales and transforms an object in dependence of its radius.
+    For spherical particles.
     """
     for r in np.arange(1, 30, 0.5):
         obj.scale = (r, r, r)
