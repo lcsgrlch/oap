@@ -1,8 +1,8 @@
-# Rendering Particles (Manual)
+# Render In Blender! (Manual)
 
-With the Blender file and the Python script 3d models of cloud particles can be rendered.
-New models can also be created. The Python code must then be adapted accordingly.
-To execute the rendering, proceed as follows:
+The [__Blender__](https://blender.org/) file contains several models of cloud particles. Together with the Python script 3d models of cloud particles can be rendered.
+You can also create new models. However, the Python code must then be adapted accordingly.
+To start the rendering, proceed as follows:
 
 #### In Blender:
 1. (Optional) Create new 3d Model. Make sure the model uses the OpaqueBlenderRender material.
