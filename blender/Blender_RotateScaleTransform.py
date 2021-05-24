@@ -1,29 +1,21 @@
 """
 Short blender script for rendering objects for different rotations, locations and scales.
-Developed for the "ParticleRayTracer.blend" file.
-
+Developed for the "Blender_ParticleRayTracer.blend" file.
 
 --- How to use ---
 
-In Blender:
-1. Enable layer 1 (camera) and the layer corresponding to a cloud particle.
-2. Make sure the cloud particle uses the OpaqueBlenderRender material and the selected
-   renderer is the Blender Renderer.
-3. (Optional) Change the resolution in pixels.
+1. Enable layer 1 (camera)
+2. (Optional) Change the resolution in pixels.
 
 In this script:
-4. Add or delete particles ####### the variable PARTICLE (in this script) to the name of your selected cloud particle.
-5. Change the output directory DIRECTORY.
-6. (Optional) Make sure folder name fits to the pixel resolution.
+3. Add/delete particle tuples from/to the PARTICLES list.
+4. Change the output directory DIRECTORY.
 
 Back to Blender:
-7. Reload and Run Script.
-
-
+5. Reload and run script in Blender.
 
 Author:  Lucas Grulich
 Date:    October 2017
-Updated: September 2018
 """
 
 import bpy
@@ -42,10 +34,12 @@ PARTICLES = [("Sphere", 4, 0, 0),  # Spherical Particles
              ("CombinedColumns05", 19, 90.068, 238.5426),
              ("HollowColumn01", 10, 2.0674, 0), ("Bullet01", 15, 2.4627, 0),
              ("Bullet02", 16, 2.7405, 0)]  # Columns and Bullets
-"""
-Experimental Particles:
-PARTICLES = [("Graupel01", 2, 4.3795, 13.64108), ("Plate01", 3, 0, 0), ("CappedColumn01", 17, 0, 0), ("Dendrite01", 18, 0, 0)]
-"""
+
+# Experimental Particles:
+# PARTICLES = [("Graupel01", 2, 4.3795, 13.64108),
+#              ("Plate01", 3, 0, 0),
+#              ("CappedColumn01", 17, 0, 0),
+#              ("Dendrite01", 18, 0, 0)]
 
 RESOLUTION = "128"
 DIRECTORY = "C:/Monoscale_" + RESOLUTION + "px/"
@@ -213,6 +207,8 @@ if __name__ == "__main__":
                 reset_object(obj)
 
         else:
+            configurations = X = Y = Z = None
+
             if particle == "CombinedColumns01":
                 print("\nStart Rendering Combined Bullets...\n")
                 configurations = [(i, i, i) for i in np.arange(1.5, 5.0, 0.5)]
@@ -268,9 +264,7 @@ if __name__ == "__main__":
                 configurations = [(i, i, i) for i in np.arange(1.0, 9.5, 0.5)]
                 X = Y = Z = range(10, 360, 36)
 
-
-            # --- Experimental ----------------------------------------------------
-
+            # --- Experimental -----------------------------------------------------------------------------------------
             elif particle == "CappedColumn01":
                 print("\nStart Rendering Combined Columns...\n")
                 configurations = [(4, 4, 4), (8, 8, 8), (12, 12, 12)]
