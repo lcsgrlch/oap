@@ -4,14 +4,16 @@ Developed for the "Blender_ParticleRayTracer.blend" file.
 
 --- How to use ---
 
-1. Enable layer 1 (camera)
-2. (Optional) Change the resolution in pixels.
+In Blender:
+1. (Optional) Create new 3d Model. Make sure the model uses the OpaqueBlenderRender material.
 
 In this script:
-3. Add/delete particle tuples from/to the PARTICLES list.
-4. Change the output directory DIRECTORY.
+2. (Optional) Add particle tuple to the PARTICLES list and add configurations for this new particle
+   (at the end of the script).
+3. Change the output directory DIRECTORY.
 
-Back to Blender:
+In Blender:
+4. (Optional) Change the resolution in pixels.
 5. Reload and run script in Blender.
 
 Author:  Lucas Grulich
@@ -115,7 +117,7 @@ def scale_transform_and_rotate_object(obj, width, length, volume, directory, ren
 
     for x in range(0, 50, 10):
         # Give it a small tilt in the beginning, since total
-        # linear images are unexpactable in real cloud data.
+        # linear images are not to be expected in real cloud data.
         for y in range(2, 90, 5):
             for z in range(0, 50, 10):
 
@@ -164,6 +166,8 @@ if __name__ == "__main__":
         obj = bpy.data.objects[particle]
         # Set the corresponding layer to True
         bpy.context.scene.layers[layer_index] = True
+
+        # Particle configurations:
 
         if particle == "Sphere":
             print("\nStart Rendering Spherical Objects...\n")
