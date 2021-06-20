@@ -22,6 +22,9 @@ setup(
     author=__author__,
     author_email="lucasgrulich@gmx.de",
     description="A transparent library for processing and analyzing individual images of Optical Array Probes (OAPs)",
+    install_requires=[
+        "numpy",
+    ],
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/lcsgrlch/oap",

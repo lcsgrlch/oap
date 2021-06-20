@@ -8,10 +8,12 @@ twine = "*"
 sphinx = "*"
 
 [packages]
+LightPipes = "==1.2.0"
 matplotlib = "*"
 numpy = "*"
 Pillow = "*"
-tensorflow = "*"
+scipy = "*"
+tensorflow = "==2.4.1"
 
 [requires]
 python_version = "3.8"

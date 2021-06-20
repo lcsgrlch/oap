@@ -1,4 +1,7 @@
-matplotlib
-numpy
-Pillow
-tensorflow
+numpy~=1.19.5
+matplotlib~=3.4.2
+tensorflow~=2.4.1
+Pillow~=8.2.0
+LightPipes~=1.2.0
+scipy~=1.6.3
+setuptools~=57.0.0

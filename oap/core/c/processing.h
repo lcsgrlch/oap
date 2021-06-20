@@ -48,11 +48,11 @@ process_particle_array(unsigned char *particle_array,
     // --- Calculate principal components ------------------------------------------------------------------------------
     double hit_ratio = 0.0;
     double alpha_value = 0.0;
-    double aspect_ratio = 0.0;
+    double axis_ratio = 0.0;
 
     if (principal)
     {
-        principal_components(particle_array, img_height, &hit_ratio, &alpha_value, &aspect_ratio, NULL);
+        principal_components(particle_array, img_height, &hit_ratio, &alpha_value, &axis_ratio, NULL);
     }
 
 
@@ -121,7 +121,7 @@ process_particle_array(unsigned char *particle_array,
         optical_array->truncated = particle_truncated;
         optical_array->cluster = number_of_particle_cluster;
         optical_array->hit_ratio = hit_ratio;
-        optical_array->aspect_ratio = aspect_ratio;
+        optical_array->axis_ratio = axis_ratio;
         optical_array->alpha = alpha_value;
 
         PyList_Append(arrays_list, (PyObject *) optical_array);

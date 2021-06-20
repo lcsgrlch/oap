@@ -705,7 +705,7 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
     # variance = ((major_axis - mean) * (major_axis - mean) + (minor_axis - mean) * (minor_axis - mean)) / 2.0
     hit_ratio = ellipse_hits / float(ellipse_misses + ellipse_hits)
     alpha_value = degrees(alpha)
-    aspect_ratio = major_axis / minor_axis
+    axis_ratio = major_axis / minor_axis
 
     if plot is not None:
 
@@ -757,7 +757,7 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
         plt.scatter(x_bary, y_bary, marker="o", color="#1f77b4", label="Barycenter")
 
         plt.text(x=txt_center_x, y=txt_center_y-0.5, s=f"{round(alpha_value, 3)}°", verticalalignment="bottom", horizontalalignment=horizontal, color="#ff7f0e")
-        #plt.text(x=0, y=-10, s=f"Hit Ratio: {round(hit_ratio, 3)}\nAspect Ratio: {round(aspect_ratio, 3)}",
+        #plt.text(x=0, y=-10, s=f"Hit Ratio: {round(hit_ratio, 3)}\nAspect Ratio: {round(axis_ratio, 3)}",
         #         color="white", verticalalignment="bottom")
 
         if plot[3] == 1:
@@ -813,7 +813,7 @@ def principal_components(array, dimensionfactor=1.0, plot=None, slicesize=SLICE_
            polygon_hits / float(polygon_misses + polygon_hits) * 100, \
            __mse(one_color_array, polygon_array), \
            alpha_value, \
-           aspect_ratio, \
+           axis_ratio, \
            (2 * major_axis, 2 * minor_axis)
 
 

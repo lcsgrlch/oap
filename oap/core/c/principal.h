@@ -23,7 +23,7 @@ principal_components(unsigned char *array,
                      int img_height,
                      double *hit_ratio,
                      double *alpha_value,
-                     double *aspect_ratio,
+                     double *axis_ratio,
                      double *mse_ellipse)
 {
     double sum_x = 0.0;
@@ -175,7 +175,7 @@ principal_components(unsigned char *array,
 
     *hit_ratio = (ellipse_hits / (double) (ellipse_misses + ellipse_hits));
     *alpha_value = alpha * (180.0/M_PI);  // Convert radian to degree.
-    *aspect_ratio = major_axis / minor_axis;
+    *axis_ratio = major_axis / minor_axis;
 
     if (mse_ellipse != NULL)
         *mse_ellipse = mse(one_color_array, ellipse_array, img_height*64);

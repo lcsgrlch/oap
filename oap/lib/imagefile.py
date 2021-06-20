@@ -105,7 +105,7 @@ class Imagefile:
         runtime.stop()
 
     def get_arrays(self, timespan=(0, 86400), area_ratio=(0, 1e9), x=(0, 1e9), y=(0, 1e9),
-                   hit_ratio=(0, 1), aspect_ratio=(0, 1e9), alpha=(-360, 360),
+                   hit_ratio=(0, 1), axis_ratio=(0, 1e9), alpha=(-360, 360),
                    c=(0, 1), r=(0, 1), timeshift=0):
         arrays = [array for array in self.arrays
                   if timespan[0] <= array.second+timeshift <= timespan[1]
@@ -113,17 +113,17 @@ class Imagefile:
                   and x[0] <= array.width() <= x[1]
                   and y[0] <= array.height() <= y[1]
                   and hit_ratio[0] <= array.hit_ratio <= hit_ratio[1]
-                  and aspect_ratio[0] <= array.aspect_ratio <= aspect_ratio[1]
+                  and axis_ratio[0] <= array.axis_ratio <= axis_ratio[1]
                   and alpha[0] <= array.alpha <= alpha[1]
                   and c[0] <= array.column <= c[1]
                   and r[0] <= array.rosette <= r[1]]
         return arrays
 
     def counts_per_second(self, timespan=(0, 86400), area_ratio=(0, 1e9), x=(0, 1e9), y=(0, 1e9),
-                          hit_ratio=(0, 1), aspect_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
+                          hit_ratio=(0, 1), axis_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
                           timeshift=0):
         arrays = self.get_arrays(timespan=timespan, area_ratio=area_ratio, x=x, y=y, hit_ratio=hit_ratio,
-                                 aspect_ratio=aspect_ratio, alpha=alpha, c=c, r=r, timeshift=timeshift)
+                                 axis_ratio=axis_ratio, alpha=alpha, c=c, r=r, timeshift=timeshift)
         counts = dict.fromkeys(range(self.arrays[0].second+timeshift,
                                      self.arrays[-1].second+timeshift + 1), 0)
         for a in arrays:
@@ -176,11 +176,11 @@ class Imagefile:
         self.__reset_plot()
 
     def plot(self, timespan=(0, 86400), area_ratio=(0, 1e9), x=(0, 1e9), y=(0, 1e9),
-             hit_ratio=(0, 1), aspect_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
+             hit_ratio=(0, 1), axis_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
              timeshift=0, index=None, color=None, fill_color=None, opacity=1.0, linewidth=1.0, fill=True,
              title=None, label=None, xlabel=None, ylabel=None, grid=False, legend=False, log=False):
         x, y = self.counts_per_second(timespan=timespan, area_ratio=area_ratio, x=x, y=y, hit_ratio=hit_ratio,
-                                      aspect_ratio=aspect_ratio, alpha=alpha, c=c, r=r, timeshift=timeshift)
+                                      axis_ratio=axis_ratio, alpha=alpha, c=c, r=r, timeshift=timeshift)
         if self.__plt_iterator is None:
             self.init_plot(1, tight_layout=False, auto_plot=True)
         i = self.__plt_iterator if index is None else index
@@ -191,11 +191,11 @@ class Imagefile:
         self.__adjust_plot(i, title, xlabel, ylabel, grid, legend, log, index)
 
     def plot_count(self, timespan=(0, 86400), area_ratio=(0, 1e9), x=(0, 1e9), y=(0, 1e9),
-                   hit_ratio=(0, 1), aspect_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
+                   hit_ratio=(0, 1), axis_ratio=(0, 1e9), alpha=(-360, 360), c=(0, 1), r=(0, 1),
                    timeshift=0, index=None, color=None, opacity=1.0, title=None,
                    label=None, xlabel=None, ylabel=None, grid=False, legend=False, log=False):
         x, y = self.counts_per_second(timespan=timespan, area_ratio=area_ratio, x=x, y=y, hit_ratio=hit_ratio,
-                                      aspect_ratio=aspect_ratio, alpha=alpha, c=c, r=r, timeshift=timeshift)
+                                      axis_ratio=axis_ratio, alpha=alpha, c=c, r=r, timeshift=timeshift)
         if self.__plt_iterator is None:
             self.init_plot(1, tight_layout=False, auto_plot=True)
         i = self.__plt_iterator if index is None else index

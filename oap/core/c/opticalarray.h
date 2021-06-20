@@ -31,7 +31,7 @@ typedef struct {
     unsigned char cluster;
 
     float hit_ratio;
-    float aspect_ratio;
+    float axis_ratio;
     float alpha;
     float column;
     float rosette;
@@ -68,7 +68,7 @@ OpticalArray_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
         self->truncated = 0;
         self->cluster = 0;
         self->hit_ratio = 0;
-        self->aspect_ratio = 0;
+        self->axis_ratio = 0;
         self->alpha = 0;
         self->column = 0;
         self->rosette = 0;
@@ -97,7 +97,7 @@ OpticalArray_init(OpticalArrayObject *self, PyObject *args, PyObject *kwargs)
                              "truncated",
                              "cluster",
                              "hit_ratio",
-                             "aspect_ratio",
+                             "axis_ratio",
                              "alpha",
                              "column",
                              "rosette",
@@ -123,7 +123,7 @@ OpticalArray_init(OpticalArrayObject *self, PyObject *args, PyObject *kwargs)
                                      &self->truncated,
                                      &self->cluster,
                                      &self->hit_ratio,
-                                     &self->aspect_ratio,
+                                     &self->axis_ratio,
                                      &self->alpha,
                                      &self->column,
                                      &self->rosette))
@@ -319,7 +319,7 @@ OpticalArray_reduce(OpticalArrayObject *self, PyObject *Py_UNUSED(ignored))
                          self->truncated,
                          self->cluster,
                          self->hit_ratio,
-                         self->aspect_ratio,
+                         self->axis_ratio,
                          self->alpha,
                          self->column,
                          self->rosette);
@@ -333,7 +333,7 @@ static PyMemberDef OpticalArray_members[] = { // ToDo: missing descriptions!
     {"second", T_UINT, offsetof(OpticalArrayObject, second), 0, ""},
     {"number", T_USHORT, offsetof(OpticalArrayObject, number), 0, ""},
     {"hit_ratio", T_FLOAT, offsetof(OpticalArrayObject, hit_ratio), 0, ""},
-    {"aspect_ratio", T_FLOAT, offsetof(OpticalArrayObject, aspect_ratio), 0, ""},
+    {"axis_ratio", T_FLOAT, offsetof(OpticalArrayObject, axis_ratio), 0, ""},
     {"alpha", T_FLOAT, offsetof(OpticalArrayObject, alpha), 0, ""},
     {"column", T_FLOAT, offsetof(OpticalArrayObject, column), 0, ""},
     {"rosette", T_FLOAT, offsetof(OpticalArrayObject, rosette), 0, ""},
